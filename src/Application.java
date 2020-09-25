@@ -26,9 +26,9 @@ public class Application {
             if(action.equals("s")){
 
                 Cube cube = new Cube();
-                //cubeScr.scrambleCube(cube);
-                //System.out.println("Scrambled cube: ");
-                //cube.showCube();
+                cubeScr.scrambleCube(cube);
+                System.out.println("Scrambled cube: ");
+                cube.showCube();
 
                 cubeSolver.solveCube(cube);
                 cube.showCube();

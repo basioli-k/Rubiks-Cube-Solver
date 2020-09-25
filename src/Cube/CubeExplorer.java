@@ -74,4 +74,19 @@ public class CubeExplorer {
 
         return coordinates;
     }
+
+    public String whichLayer(Cube cube, int i, int j){
+        if(5<=j && j<=9 && 2<=i && i<=6){
+            return "bottom";
+        }
+        else if(j==4 || i==1 || j == 10 || i==7){
+            return "middle";
+        }
+        else return "top";
+    }
+
+    public boolean isRightForCross(Cube cube, int i, int j){
+        if (8<=j && j<=12 && 4<=i && i<=7) return true;
+        else return false;
+    }
 }

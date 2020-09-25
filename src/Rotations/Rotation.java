@@ -174,6 +174,18 @@ public class Rotation {
 
     }
 
+    public void F(Cube cube){
+       rotateRight90(cube);
+       R(cube);
+       rotateLeft90(cube);
+    }
+
+    public void FPrime(Cube cube){
+       rotateLeft90(cube);
+       LPrime(cube);
+       rotateRight90(cube);
+    }
+
     public void orientColorDown(Cube cube, char color){
        CubeExplorer cubeExp = new CubeExplorer();
        int [] centerCoord = cubeExp.findCenter(cube,color);

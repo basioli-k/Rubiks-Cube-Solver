@@ -14,6 +14,7 @@ public class Cube {
     };
 
     public int [][] centerCoordinates = {{4,7},{4,4},{4,10},{7,7},{1,7}, {4,13}};
+
     public Cube(){
         cubeGrid.add("******ooo********");
         cubeGrid.add("******ooo********");
@@ -51,10 +52,31 @@ public class Cube {
     public void showCube(){
 
         for(int i = 0 ; i < cubeGrid.size(); ++i){
-            System.out.println(cubeGrid.get(i));
+            rowPrinter(cubeGrid.get(i),i);
+            System.out.println("");
+            if (i == 2 || i == 5) { for (int j = 0; j<1 ; ++j) System.out.println("**************************");}
+
         }
         System.out.println();
     }
 
+    void rowPrinter(String gridRow,int index){
+        for(int i = 0 ; i < gridRow.length() ; ++i){
+            if(i == 6) {
+                System.out.printf("***" + String.valueOf(gridRow.charAt(i)));
+            }
+            else if(i == 9) {
+                System.out.printf("***" + String.valueOf(gridRow.charAt(i)));
+            }
+            else if(i == 12) {
+                System.out.printf("***" + String.valueOf(gridRow.charAt(i)));
+            }
+            else{
+
+                System.out.printf( String.valueOf(gridRow.charAt(i)) );
+
+            }
+        }
+    }
 
 }
