@@ -209,4 +209,20 @@ public class Rotation {
        }
     }
 
+    public void doFourMoves(Cube cube){
+       R(cube);
+       U(cube);
+       RPrime(cube);
+       UPrime(cube);
+    }
+
+    public void B(Cube cube){
+       X(cube);
+       X(cube);
+       UPrime(cube);
+       X(cube);
+       X(cube);
+    }
+
+
 }

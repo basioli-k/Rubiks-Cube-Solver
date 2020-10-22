@@ -29,8 +29,8 @@ public class Application {
                 cubeScr.scrambleCube(cube);
                 System.out.println("Scrambled cube: ");
                 cube.showCube();
-
                 cubeSolver.solveCube(cube);
+                System.out.println("The cube is solved: ");
                 cube.showCube();
             }
         }

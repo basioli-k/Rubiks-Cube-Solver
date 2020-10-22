@@ -8,25 +8,6 @@ public class SolveCross {
     CubeExplorer cubeExp = new CubeExplorer();
     Rotation rot = new Rotation();
 
-    boolean isPiecePositionedCorrectly(Cube cube, int i, int j, char color){
-        boolean positionIsCorrect = true;
-        int[] coloredCenter = cubeExp.findCenter(cube,color);
-
-        if (coloredCenter[0] == 4 && coloredCenter[1] == 4){
-            positionIsCorrect = (i==4 && j==3) || (i==4 && j==14);
-        }
-        else if (coloredCenter[0] == 1 && coloredCenter[1] == 7){
-            positionIsCorrect = (i==0 && j==7) || (i==3 && j==13);
-        }
-        else if (coloredCenter[0] == 4 && coloredCenter[1] == 10){
-            positionIsCorrect = (i==4 && j==11) || (i==4 && j==12);
-        }
-        else if (coloredCenter[0] == 7 && coloredCenter[1] == 7){
-            positionIsCorrect = (i==8 && j==7) || (i==5 && j==13);
-        }
-
-        return positionIsCorrect;
-    }
 
     boolean doColorsMatch(Cube cube, int i, int j, int k, int l){
         return cube.cubeGrid.get(i).charAt(j) == cube.cubeGrid.get(k).charAt(l);
@@ -59,7 +40,7 @@ public class SolveCross {
                 while(!layer.equals("top")){
                     while(!layer.equals("middle")){
 
-                        if(cubeExp.isRightForCross(cube,coloredEdge[0][0],coloredEdge[0][1])){
+                        if(cubeExp.isRightForRotation(cube,coloredEdge[0][0],coloredEdge[0][1])){
                             rot.R(cube);
 
 
@@ -69,7 +50,7 @@ public class SolveCross {
                         layer = cubeExp.whichLayer(cube,coloredEdge[0][0],coloredEdge[0][1]);
                     }
 
-                    if(cubeExp.isRightForCross(cube,coloredEdge[0][0],coloredEdge[0][1])){
+                    if(cubeExp.isRightForRotation(cube,coloredEdge[0][0],coloredEdge[0][1])){
                         if(coloredEdge[0][0] == 7 && coloredEdge[0][1] == 8){
                             rot.FPrime(cube);
                             rot.U(cube);
@@ -90,12 +71,12 @@ public class SolveCross {
                     layer = cubeExp.whichLayer(cube,coloredEdge[0][0],coloredEdge[0][1]);
                 }
 
-                while(!isPiecePositionedCorrectly(cube,coloredEdge[0][0],coloredEdge[0][1],colors[i])){
+                while(!cubeExp.isPiecePositionedCorrectly(cube,coloredEdge[0][0],coloredEdge[0][1],colors[i])){
                     rot.U(cube);
                     coloredEdge = cubeExp.findEdge(cube,colors[i],'w');
                 }
 
-                while(!cubeExp.isRightForCross(cube,coloredEdge[0][0],coloredEdge[0][1])){
+                while(!cubeExp.isRightForRotation(cube,coloredEdge[0][0],coloredEdge[0][1])){
                     rot.rotateRight90(cube);
                     coloredEdge = cubeExp.findEdge(cube,colors[i],'w');
                 }
